@@ -24,3 +24,11 @@ def mark_as_finished(task):
 
     task_position = task_list.index(task)
     todo_list[task_position] = task + " [finished]"
+
+
+def delete_all_tasks():
+    """
+    Empty the todo list
+    """
+
+    todo_list.clear()
