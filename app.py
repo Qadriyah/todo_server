@@ -1,7 +1,7 @@
 import time
 
-from accounts import accounts, add_account, login
-from tasks import todo_list, create_task, delete_task, mark_as_finished, delete_all_tasks
+from accounts import *
+from tasks import *
 
 menu = {
     1: "Create task",
@@ -14,11 +14,6 @@ menu = {
 
 
 def main():
-    """
-    Display a navigation menu
-    Option 1 creates a new task
-    Option 2 displays a list of all tasks and deletes the one selected from the list
-    """
     print("\nMenu")
     for key, value in menu.items():
         print("{}. {}".format(key, value))
@@ -27,6 +22,10 @@ def main():
     try:
         selected_option = int(selected_option)
         if selected_option == 1:
+            """
+            Create a new task 
+            """
+
             task = input("\nEnter your task: ")
             print("[+] Creating your task...")
             time.sleep(2)
@@ -35,17 +34,30 @@ def main():
             main()
 
         if selected_option == 2:
-            print("\nYour Tasks")
-            for i, item in enumerate(todo_list):
-                print("{}. {}".format(i+1, item))
-            selected_task = input("\nSelect a task to delete: ")
-            print("[+] Deleting task...")
-            time.sleep(2)
-            delete_task(todo_list[int(selected_task) - 1])
-            print("[+] Task has been deleted successfully\n")
+            """
+            Display a list of all tasks.
+            Delete the selected task.
+            """
+
+            if len(todo_list) == 0:
+                print("\nThere are no items on your list\n")
+            else:
+                print("\nYour Tasks")
+                for i, item in enumerate(todo_list):
+                    print("{}. {}".format(i+1, item))
+
+                selected_task = input("\nSelect a task to delete: ")
+                print("[+] Deleting task...")
+                time.sleep(2)
+                delete_task(todo_list[int(selected_task) - 1])
+                print("[+] Task has been deleted successfully\n")
             main()
 
         if selected_option == 3:
+            """
+            Delete all tasks
+            """
+
             print("\n[+] Deleting all tasks...")
             time.sleep(2)
             delete_all_tasks()
@@ -53,22 +65,43 @@ def main():
             main()
 
         if selected_option == 4:
-            print("\nYour Tasks")
-            for i, item in enumerate(todo_list):
-                print("{}. {}".format(i+1, item))
-            selected_task = input("\nSelect a finished task: ")
-            print("[+] Marking task as finished...")
-            time.sleep(2)
-            mark_as_finished(todo_list[int(selected_task) - 1])
-            print("[+] Task has been marked successfully\n")
+            """
+            Displays a list of all tasks
+            Marks a selected task as finished
+            """
+
+            if len(todo_list) == 0:
+                print("\nThere are no items on your list\n")
+            else:
+                print("\nYour Tasks")
+                for i, item in enumerate(todo_list):
+                    print("{}. {}".format(i+1, item))
+
+                selected_task = input("\nSelect a finished task: ")
+                print("[+] Marking task as finished...")
+                time.sleep(2)
+                mark_as_finished(todo_list[int(selected_task) - 1])
+                print("[+] Task has been marked successfully\n")
+            main()
 
         if selected_option == 5:
+            """
+            Dsiplays a list of all tasks
+            """
+
             print("\nYour Tasks")
-            for i, item in enumerate(todo_list):
-                print("{}. {}".format(i+1, item))
+            if len(todo_list) == 0:
+                print("There are no items on your list")
+            else:
+                for i, item in enumerate(todo_list):
+                    print("{}. {}".format(i+1, item))
             main()
 
         if selected_option == 6:
+            """
+            Logs out a user
+            """
+
             print("\n[+] Logging out...")
             time.sleep(2)
             print("[+] You have been logged out\n")
