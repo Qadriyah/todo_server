@@ -15,3 +15,12 @@ def delete_task(task):
     """
 
     todo_list.remove(task)
+
+
+def mark_as_finished(task):
+    """
+    Appends a label '[finished]' at the end of the task
+    """
+
+    task_position = task_list.index(task)
+    todo_list[task_position] = task + " [finished]"
