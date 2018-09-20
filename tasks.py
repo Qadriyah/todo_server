@@ -22,7 +22,7 @@ def mark_as_finished(task):
     Appends a label '[finished]' at the end of the task
     """
 
-    task_position = task_list.index(task)
+    task_position = todo_list.index(task)
     todo_list[task_position] = task + " [finished]"
 
 
