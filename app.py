@@ -29,10 +29,6 @@ def main():
             main()
 
         if selected_option == 1:
-            """
-            Create a new task
-            """
-
             task = input("\nEnter your task: ")
             print("[+] Creating your task...")
             time.sleep(2)
@@ -41,11 +37,6 @@ def main():
             main()
 
         if selected_option == 2:
-            """
-            Display a list of all tasks.
-            Delete the selected task.
-            """
-
             #  Check if the todo list is empty
             if len(todo_list) == 0:
                 print("[+] There are no items in your todo list")
@@ -72,10 +63,6 @@ def main():
             main()
 
         if selected_option == 3:
-            """
-            Delete all tasks
-            """
-
             #  Check if the todo list is empty
             if len(todo_list) == 0:
                 print("[+] There are no items in your todo list")
@@ -88,11 +75,6 @@ def main():
             main()
 
         if selected_option == 4:
-            """
-            Displays a list of all tasks
-            Marks a selected task as finished
-            """
-
             #  Check if the todo list is empty
             if len(todo_list) == 0:
                 print("[+] There are no items in your todo list")
@@ -118,10 +100,6 @@ def main():
             main()
 
         if selected_option == 5:
-            """
-            Dsiplays a list of all tasks
-            """
-
             #  Check if the todo list is empty
             if len(todo_list) == 0:
                 print("[+] There are no items in your todo list")
@@ -132,10 +110,6 @@ def main():
             main()
 
         if selected_option == 6:
-            """
-            Logs out a user
-            """
-
             print("\n[+] Logging out...")
             time.sleep(2)
             print("[+] You have been logged out\n")

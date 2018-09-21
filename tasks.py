@@ -3,7 +3,11 @@ todo_list = []
 
 def create_task(task):
     """
-    Add the task to the todo list
+    Adds a task to the todo list. Returns tuple with two values, 
+    a boolean and a message
+
+    Argument: 
+    task -- The task to be created
     """
 
     #  Check if task already exists
@@ -17,7 +21,11 @@ def create_task(task):
 
 def delete_task(task):
     """
-    Removes the specified task from the todo list
+    Removes the specified task from the todo list. Returns 
+    a tuple with two values, a boolean and a message
+
+    Arguments:
+    task -- The task to be removed
     """
 
     #  Check if the todo list is empty
@@ -35,7 +43,12 @@ def delete_task(task):
 
 def mark_as_finished(task):
     """
-    Appends a label '[finished]' at the end of the task
+    Appends a label '[finished]' at the end of the task to 
+    indicate that the task has been finished. Returns a tuple 
+    with two values, a boolean and message.
+
+    Arguments:
+    task    -- the task to be labelled
     """
 
     #  Check if the selected task is already marked as finished
