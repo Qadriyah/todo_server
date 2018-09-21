@@ -7,9 +7,17 @@ def add_account(name, password):
     with password as key and name as value
     """
 
+    #  Check for blank username and password
     if not name and not password:
         return "Blank name or password", False
+
+    #  Check if user already exists
+    if accounts.get(password):
+        return "User already exists", False
+
+    #  Add a new user
     accounts.update({name: password})
+    return True
 
 
 def login(name, password):
@@ -18,8 +26,7 @@ def login(name, password):
     exists in the accounts dictionary
     """
 
-    if accounts.get(password):
-        if accounts[password] is name:
-            return True
-        return False
+    #  Check if user account exists
+    if accounts.get(password) == name:
+        return True
     return False

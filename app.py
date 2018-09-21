@@ -21,16 +21,23 @@ def main():
     selected_option = input("\nSelect an option: ")
     try:
         selected_option = int(selected_option)
+
+        #  Check if the selected option exists on the task list
+        menu_options = list(menu.keys())
+        if selected_option not in menu_options:
+            print("[+] The selected item does not exists\n")
+            main()
+
         if selected_option == 1:
             """
-            Create a new task 
+            Create a new task
             """
 
             task = input("\nEnter your task: ")
             print("[+] Creating your task...")
             time.sleep(2)
-            create_task(task)
-            print("[+] Task created successfully\n")
+            result = create_task(task)
+            print("[+] {}\n".format(result[0]))
             main()
 
         if selected_option == 2:
@@ -39,24 +46,40 @@ def main():
             Delete the selected task.
             """
 
+            #  Check if the todo list is empty
             if len(todo_list) == 0:
-                print("\nThere are no items on your list\n")
-            else:
-                print("\nYour Tasks")
-                for i, item in enumerate(todo_list):
-                    print("{}. {}".format(i+1, item))
+                print("[+] There are no items in your todo list")
+                main()
 
-                selected_task = input("\nSelect a task to delete: ")
-                print("[+] Deleting task...")
-                time.sleep(2)
-                delete_task(todo_list[int(selected_task) - 1])
-                print("[+] Task has been deleted successfully\n")
+            #  Print a list of todos
+            print("\nYour Tasks")
+            for i, item in enumerate(todo_list):
+                print("{}. {}".format(i+1, item))
+
+            selected_task = input("\nSelect a task to delete: ")
+            print("[+] Deleting task...")
+            time.sleep(2)
+
+            #  Check if the seleted item is on the list
+            items = [i for i, item in enumerate(todo_list)]
+            if int(selected_task) - 1 not in items:
+                print("[+] The selected task is not on the list\n")
+                main()
+
+            #  Delete the selected task from the list
+            result = delete_task(todo_list[int(selected_task) - 1])
+            print("[+] {}\n".format(result[0]))
             main()
 
         if selected_option == 3:
             """
             Delete all tasks
             """
+
+            #  Check if the todo list is empty
+            if len(todo_list) == 0:
+                print("[+] There are no items in your todo list")
+                main()
 
             print("\n[+] Deleting all tasks...")
             time.sleep(2)
@@ -70,18 +93,28 @@ def main():
             Marks a selected task as finished
             """
 
+            #  Check if the todo list is empty
             if len(todo_list) == 0:
-                print("\nThere are no items on your list\n")
-            else:
-                print("\nYour Tasks")
-                for i, item in enumerate(todo_list):
-                    print("{}. {}".format(i+1, item))
+                print("[+] There are no items in your todo list")
+                main()
 
-                selected_task = input("\nSelect a finished task: ")
-                print("[+] Marking task as finished...")
-                time.sleep(2)
-                mark_as_finished(todo_list[int(selected_task) - 1])
-                print("[+] Task has been marked successfully\n")
+            print("\nYour Tasks")
+            for i, item in enumerate(todo_list):
+                print("{}. {}".format(i+1, item))
+
+            selected_task = input("\nSelect a finished task: ")
+            print("[+] Marking task as finished...")
+            time.sleep(2)
+
+            #  Check if the seleted task is on the list
+            items = [i for i, item in enumerate(todo_list)]
+            if int(selected_task) - 1 not in items:
+                print("[+] The selected task is not on the list\n")
+                main()
+
+            #  Mark task as finished
+            result = mark_as_finished(todo_list[int(selected_task) - 1])
+            print("[+] {}\n".format(result[0]))
             main()
 
         if selected_option == 5:
@@ -89,12 +122,13 @@ def main():
             Dsiplays a list of all tasks
             """
 
-            print("\nYour Tasks")
+            #  Check if the todo list is empty
             if len(todo_list) == 0:
-                print("There are no items on your list")
-            else:
-                for i, item in enumerate(todo_list):
-                    print("{}. {}".format(i+1, item))
+                print("[+] There are no items in your todo list")
+                main()
+
+            for i, item in enumerate(todo_list):
+                print("{}. {}".format(i+1, item))
             main()
 
         if selected_option == 6:
