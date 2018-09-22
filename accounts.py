@@ -4,12 +4,15 @@ accounts = {}
 def add_account(name, password):
     """
     Adds a user to the accounts dictionary with password 
-    as key and name as value. Returns a tuple with two
-    elements, a boolean and a message
+    as key and name as value.
 
-    Arguments:
-    name        -- the name that will be used by the user to login.
-    password    -- the password that will be used during authentication
+    Args:
+        name(str): Username
+        password(str): Password
+
+    Returns: 
+        tuple: With two elements, amessage and a bool. 
+        ('success', True), ('Failure', False)
     """
 
     #  Check for blank username and password
@@ -28,11 +31,14 @@ def add_account(name, password):
 def login(name, password):
     """
     Checks if the name and the corresponding password 
-    exists in the accounts dictionary and returns a boolean
+    exists in the accounts dictionary.
 
-    Arguments:
-    name        -- username
-    password    -- user password
+    Args:
+        name(str): Username
+        password(str): Password
+
+    Returns:
+        bool: True for success, False for failure
     """
 
     #  Check if user account exists

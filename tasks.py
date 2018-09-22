@@ -3,11 +3,14 @@ todo_list = []
 
 def create_task(task):
     """
-    Adds a task to the todo list. Returns tuple with two values, 
-    a boolean and a message
+    Adds a task to the todo list.
 
-    Argument: 
-    task -- The task to be created
+    Args: 
+        task(str): The task to be created
+
+    Returns: 
+        tuple: With two elements, amessage and a bool. 
+        ('success', True), ('Failure', False)
     """
 
     #  Check if task already exists
@@ -21,11 +24,14 @@ def create_task(task):
 
 def delete_task(task):
     """
-    Removes the specified task from the todo list. Returns 
-    a tuple with two values, a boolean and a message
+    Removes the specified task from the todo list.
 
-    Arguments:
-    task -- The task to be removed
+    Args:
+        task(str): The task to be removed
+
+    Returns: 
+        tuple: With two elements, a message and a bool. 
+        ('success', True), ('Failure', False)
     """
 
     #  Check if the todo list is empty
@@ -44,11 +50,14 @@ def delete_task(task):
 def mark_as_finished(task):
     """
     Appends a label '[finished]' at the end of the task to 
-    indicate that the task has been finished. Returns a tuple 
-    with two values, a boolean and message.
+    indicate that the task has been finished.
 
-    Arguments:
-    task    -- the task to be labelled
+    Args:
+        task(str): The task to be labelled
+
+    Returns: 
+        tuple: With two elements, a message and a bool. 
+        ('success', True), ('Failure', False)
     """
 
     #  Check if the selected task is already marked as finished
@@ -62,7 +71,49 @@ def mark_as_finished(task):
 
 def delete_all_tasks():
     """
-    Empty the todo list
+    Deletes all tasks from the todo list
     """
 
     todo_list.clear()
+
+
+def display_todo_list():
+    """
+    Prints all tasks in the todo list
+    """
+
+    print("\n----------------------------------------")
+    print("Your Tasks")
+    print("----------------------------------------")
+    for i, item in enumerate(todo_list):
+        print("{}. {}".format(i+1, item))
+    print("----------------------------------------")
+
+
+def is_list_empty():
+    """
+    Checks if the todo list is empty
+
+    Returns:
+        bool: True for success, False otherwise
+    """
+    if len(todo_list) == 0:
+        return True
+    return False
+
+
+def is_task_in_the_list(task_position):
+    """
+    Checks if the selected task in the todo list
+
+    Args:
+        task_position(int): The position of the task in the todo list
+
+    Returns:
+        bool: True for success, False otherwise
+    """
+
+    items = [i for i, item in enumerate(todo_list)]
+    if task_position not in items:
+        return False
+    return True
