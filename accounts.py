@@ -24,7 +24,7 @@ def add_account(name, password):
         return "User already exists", False
 
     #  Add a new user
-    accounts.update({name: password})
+    accounts.update({password: name})
     return "Sucess", True
 
 
